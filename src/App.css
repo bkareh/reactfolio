@@ -1,0 +1,68 @@
+code {
+  color: #e03616;
+}
+
+main {
+  background-color: #1E253D;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+a {
+  color: #D4E4BC;
+}
+
+a:hover {
+  color: #9CC069;
+}
+
+.App-logo {
+  height: 20vmin;
+  pointer-events: none;
+}
+
+.navBtn {
+  background-color: #9CC069;
+
+}
+
+.navBtn:hover {
+  background-color: #6a9235;
+}
+
+.btn1, btn1:hover {
+  color: #fff;
+  border-color:#1E253D
+}
+
+.btn2 {
+  background-color: #1E253D;
+}
+
+.btn2:hover {
+  background-color: #474d68;
+}
+
+.navBg {
+  background-color: #1E253D;
+}
+
+/*@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}*/
+
+/*@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}*/
