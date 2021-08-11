@@ -1,70 +1,121 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import BHlogo from './img/logo1.png';
 import {
-  MDBContainer,
-  MDBNavbar,
-  MDBNavbarBrand,
-  MDBNavbarToggler,
-  MDBIcon,
-  MDBNavbarNav,
-  MDBNavbarItem,
-  MDBNavbarLink,
-  MDBBtn,
-  MDBCollapse
+  MDBContainer as Container,
+  MDBNavbar as Navbar,
+  MDBNavbarBrand as NavbarBrand,
+  MDBNavbarToggler as NavbarToggler,
+  MDBIcon as Icon,
+  MDBNavbarNav as Nav,
+  MDBNavbarItem as NavItem,
+  MDBNavbarLink as NavLink,
+  MDBBtn as Btn,
+  MDBCollapse as Collapse,
+  MDBModal as Modal,
+  MDBModalHeader as ModalHeader,
+  MDBModalBody as ModalBody,
+  MDBInput as Input
 } from 'mdb-react-ui-kit';
 
-function Header() {
-  const [showBasic, setShowBasic] = useState(false);
+class Header extends Component {
+    constructor(props) {
+        super(props);
 
-  return (
-    <MDBNavbar fixed='top' expand='md' dark className="navBg">
-      <MDBContainer fluid>
-        <MDBNavbarBrand className='mr-auto' href='#'><img src={BHlogo} width="50" height="50" alt="logo" /></MDBNavbarBrand>
+        this.state = {
+            isNavOpen: false,
+            isModalOpen: false
+        };
 
-        <MDBNavbarToggler
-          aria-controls='navbarSupportedContent'
-          aria-expanded='false'
-          aria-label='Toggle navigation'
-          onClick={() => setShowBasic(!showBasic)}
-        >
-        <MDBBtn floating tag='a' className='navBtn'>
-          <MDBIcon icon='bars' fas />
-        </MDBBtn>
-        </MDBNavbarToggler>
+        this.toggleNav = this.toggleNav.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
+        this.handleLogin = this.handleLogin.bind(this);
+    }
 
-        <MDBCollapse navbar show={showBasic}>
-          <MDBNavbarNav className='mr-auto mb-0'>
-            <MDBNavbarItem>
-              <MDBNavbarLink active aria-current='page' href='#'>
-                Home
-              </MDBNavbarLink>
-            </MDBNavbarItem>
-            
-            <MDBNavbarItem>
-              <MDBNavbarLink href='#'>About</MDBNavbarLink>
-            </MDBNavbarItem>
+    toggleNav() {
+        this.setState({
+            isNavOpen: !this.state.isNavOpen
+        });
+    }
 
-            <MDBNavbarItem>
-              <MDBNavbarLink href='#'>Projects</MDBNavbarLink>
-            </MDBNavbarItem>
+    toggleModal() {
+        this.setState({
+            isModalOpen: !this.state.isModalOpen
+        });
+    }
 
-            <MDBNavbarItem>
-              <MDBNavbarLink href='#'>Contact</MDBNavbarLink>
-            </MDBNavbarItem>
+    handleLogin(event) {
+        alert(`Username: ${this.username.value} Password: ${this.password.value} Remember: ${this.remember.checked}`);
+        this.toggleModal();
+        event.preventDefault();
+    }
 
-            <MDBNavbarItem>
-                <MDBBtn outline rounded className='mx-2 btn1'>PUSH</MDBBtn>
-                <MDBBtn rounded className='mx-2 btn2'>PUSH</MDBBtn>
+    render() {
+        return (
+            <>
+            <Navbar fixed='top' expand='md' dark className="navBg">
+            <Container fluid>
+                <NavbarBrand className='mr-auto' href='#'><img src={BHlogo} width="50" height="50" alt="logo" /></NavbarBrand>
+
+                <NavbarToggler
+                aria-controls='navbarSupportedContent'
+                aria-expanded='false'
+                aria-label='Toggle navigation'
+                onClick={this.toggleNav}
+                >
+                <Btn floating tag='a' className='navBtn'>
+                <Icon icon='bars' fas />
+                </Btn>
+                </NavbarToggler>
+
+                <Collapse navbar isOpen={this.state.isNavOpen}>
+                <Nav navbar className='mr-auto mb-0'>
+                    <NavItem>
+                    <NavLink active aria-current='page' href='#'>
+                        Home
+                    </NavLink>
+                    </NavItem>
+                    
+                    <NavItem>
+                    <NavLink href='#'>About</NavLink>
+                    </NavItem>
+
+                    <NavItem>
+                    <NavLink href='#'>Projects</NavLink>
+                    </NavItem>
+
+                    <NavItem>
+                    <NavLink href='#'>Contact</NavLink>
+                    </NavItem>
+
+                    <NavItem>
+                        <Btn outline rounded className='mx-2 btn1'>PUSH</Btn>
+                        <Btn rounded className='mx-2 btn2' onClick={this.toggleModal}>PUSH</Btn>
+                        
+                    </NavItem>
+
+                </Nav>
+                </Collapse>
+            </Container>
+            </Navbar>
+
+            <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+            <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
+            <ModalBody>
+            <form onSubmit={this.handleLogin}>
+                <div>
+                        <Input label="Username" htmlFor="username" type="text" id="username" name="username" innerRef={input => this.username = input} />
+                </div>
+                <div>
+                        <Input label="Password" htmlFor="password" type="password" id="password" name="password" innerRef={input => this.password = input} />
+                </div>
                 
-            </MDBNavbarItem>
-
-            
-
-          </MDBNavbarNav>
-        </MDBCollapse>
-      </MDBContainer>
-    </MDBNavbar>
-  );
+                <Btn type="submit" color="primary">Login</Btn>
+            </form>
+            </ModalBody>
+            </Modal>
+            </>
+        );
+    }
 }
 
 export default Header;
