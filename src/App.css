@@ -2,7 +2,7 @@ code {
   color: #e03616;
 }
 
-main {
+.HomeBody {
   background-color: #1E253D;
   min-height: 100vh;
   display: flex;
@@ -13,11 +13,11 @@ main {
   color: white;
 }
 
-a {
+.HomeBodyLink {
   color: #D4E4BC;
 }
 
-a:hover {
+.HomeBodyLink:hover {
   color: #9CC069;
 }
 

@@ -1,22 +1,24 @@
-import React from 'react';
-import BHlogo from './img/logo1.png';
+import React, { Component } from "react";
+import Header from "./HeaderComponent";
+import Home from "./HomeComponent";
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+class Main extends Component {
 
-function Main() {
+render() {
+    
     return (
       <>
-          <img src={BHlogo} className="App-logo" alt="logo" />
-          <p>
-            Currently <code>UNDER CONSTRUCTION</code>, please stand by.
-          </p>
-          <a
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            What up, WORLD?
-          </a>
+        <div>
+        <Header />
+        </div>
+        <div>
+        <Home />
+        </div>
+      
       </>
     );
   }
+}
   
-  export default Main;
+export default withRouter(connect(Main));

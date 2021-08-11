@@ -8,7 +8,6 @@ import {
   MDBIcon as Icon,
   MDBNavbarNav as Nav,
   MDBNavbarItem as NavItem,
-  MDBNavbarLink as NavLink,
   MDBBtn as Btn,
   MDBCollapse as Collapse,
   MDBModal as Modal,
@@ -16,6 +15,8 @@ import {
   MDBModalBody as ModalBody,
   MDBInput as Input
 } from 'mdb-react-ui-kit';
+
+import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
     constructor(props) {
@@ -57,9 +58,6 @@ class Header extends Component {
                 <NavbarBrand className='mr-auto' href='#'><img src={BHlogo} width="50" height="50" alt="logo" /></NavbarBrand>
 
                 <NavbarToggler
-                aria-controls='navbarSupportedContent'
-                aria-expanded='false'
-                aria-label='Toggle navigation'
                 onClick={this.toggleNav}
                 >
                 <Btn floating tag='a' className='navBtn'>
@@ -70,21 +68,21 @@ class Header extends Component {
                 <Collapse navbar isOpen={this.state.isNavOpen}>
                 <Nav navbar className='mr-auto mb-0'>
                     <NavItem>
-                    <NavLink active aria-current='page' href='#'>
+                    <NavLink active to="/home">
                         Home
                     </NavLink>
                     </NavItem>
                     
                     <NavItem>
-                    <NavLink href='#'>About</NavLink>
+                    <NavLink to="/about">About</NavLink>
                     </NavItem>
 
                     <NavItem>
-                    <NavLink href='#'>Projects</NavLink>
+                    <NavLink to="/projects">Projects</NavLink>
                     </NavItem>
 
                     <NavItem>
-                    <NavLink href='#'>Contact</NavLink>
+                    <NavLink to="contact">Contact</NavLink>
                     </NavItem>
 
                     <NavItem>

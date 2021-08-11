@@ -1,24 +1,20 @@
-import React from 'react';
-import Header from './components/HeaderComponent';
+import React, { Component } from 'react';
 import Main from './components/MainComponent';
-
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 
-function App() {
-  return (
-    <>
-    <div className="App">
-      <header>
-        <Header />
-      </header>
-    </div>
-    <div className="App">
-      <main>
-        <Main />
-      </main>
-    </div>
-    </>
-  );
+class App extends Component {
+  render() {
+    return (
+      <>
+        <BrowserRouter>
+          <div className="App">
+            <Main />
+          </div>
+        </BrowserRouter>
+      </>
+    );
+  }
 }
 
 export default App;
