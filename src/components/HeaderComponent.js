@@ -1,119 +1,106 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import BHlogo from './img/logo1.png';
 import {
-  MDBContainer as Container,
-  MDBNavbar as Navbar,
-  MDBNavbarBrand as NavbarBrand,
-  MDBNavbarToggler as NavbarToggler,
-  MDBIcon as Icon,
-  MDBNavbarNav as Nav,
-  MDBNavbarItem as NavItem,
-  MDBBtn as Btn,
-  MDBCollapse as Collapse,
-  MDBModal as Modal,
-  MDBModalHeader as ModalHeader,
-  MDBModalBody as ModalBody,
-  MDBInput as Input
+    MDBContainer as Container,
+    MDBNavbar as Navbar,
+    MDBNavbarBrand as NavbarBrand,
+    MDBNavbarToggler as NavbarToggler,
+    MDBIcon as Icon,
+    MDBNavbarNav as Nav,
+    MDBNavbarItem as NavItem,
+    MDBBtn as Btn,
+    MDBCollapse as Collapse,
+    MDBModal as Modal,
+    MDBModalHeader as ModalHeader,
+    MDBModalTitle as ModalTitle,
+    MDBModalFooter as ModalFooter,
+    MDBModalBody as ModalBody,
+    MDBInput as Input,
+    MDBModalDialog as ModalDialog,
+    MDBModalContent as ModalContent
 } from 'mdb-react-ui-kit';
 
 import { NavLink } from 'react-router-dom';
 
-class Header extends Component {
-    constructor(props) {
-        super(props);
+function Header() {
 
-        this.state = {
-            isNavOpen: false,
-            isModalOpen: false
-        };
+    const [showDD, setShowDD] = useState(false);
+    const [ showModal, setShowModal] =useState(false);
+    const toggleModal = () => setShowModal(!showModal);
 
-        this.toggleNav = this.toggleNav.bind(this);
-        this.toggleModal = this.toggleModal.bind(this);
-        this.handleLogin = this.handleLogin.bind(this);
-    }
-
-    toggleNav() {
-        this.setState({
-            isNavOpen: !this.state.isNavOpen
-        });
-    }
-
-    toggleModal() {
-        this.setState({
-            isModalOpen: !this.state.isModalOpen
-        });
-    }
-
-    handleLogin(event) {
-        alert(`Username: ${this.username.value} Password: ${this.password.value} Remember: ${this.remember.checked}`);
-        this.toggleModal();
-        event.preventDefault();
-    }
-
-    render() {
-        return (
-            <>
+    return (
+        <>
             <Navbar fixed='top' expand='md' dark className="navBg">
-            <Container fluid>
-                <NavbarBrand className='mr-auto' href='#'><img src={BHlogo} width="50" height="50" alt="logo" /></NavbarBrand>
+                <Container fluid>
+                    <NavbarBrand className='mr-auto' href='#'><img src={BHlogo} width="50" height="50" alt="logo" /></NavbarBrand>
 
-                <NavbarToggler
-                onClick={this.toggleNav}
-                >
-                <Btn floating tag='a' className='navBtn'>
-                <Icon icon='bars' fas />
-                </Btn>
-                </NavbarToggler>
+                    <NavbarToggler
+                        onClick={() => setShowDD(!showDD)}
+                    >
+                        <Btn floating tag='a' className='navBtn'>
+                            <Icon icon='bars' fas />
+                        </Btn>
+                    </NavbarToggler>
 
-                <Collapse navbar isOpen={this.state.isNavOpen}>
-                <Nav navbar className='mr-auto mb-0'>
-                    <NavItem>
-                    <NavLink active to="/home">
-                        Home
-                    </NavLink>
-                    </NavItem>
-                    
-                    <NavItem>
-                    <NavLink to="/about">About</NavLink>
-                    </NavItem>
+                    <Collapse navbar show={showDD}>
+                        <Nav navbar className='mr-auto mb-0'>
+                            <NavItem>
+                                <NavLink className="nav-link" active to="/home">
 
-                    <NavItem>
-                    <NavLink to="/projects">Projects</NavLink>
-                    </NavItem>
+                                    Home
+                                </NavLink>
+                            </NavItem>
 
-                    <NavItem>
-                    <NavLink to="contact">Contact</NavLink>
-                    </NavItem>
+                            <NavItem>
+                                <NavLink className="nav-link" to="/about">About</NavLink>
+                            </NavItem>
 
-                    <NavItem>
-                        <Btn outline rounded className='mx-2 btn1'>PUSH</Btn>
-                        <Btn rounded className='mx-2 btn2' onClick={this.toggleModal}>PUSH</Btn>
-                        
-                    </NavItem>
+                            <NavItem>
+                                <NavLink className="nav-link" to="/projects">Projects</NavLink>
+                            </NavItem>
 
-                </Nav>
-                </Collapse>
-            </Container>
+                            <NavItem>
+                                <NavLink className="nav-link" to="contact">Contact</NavLink>
+                            </NavItem>
+
+                            <NavItem>
+                                <Btn outline rounded className='mx-2 btn1'>PUSH</Btn>
+                                <Btn rounded className='mx-2 btn2' onClick={toggleModal}>PUSH</Btn>
+
+                            </NavItem>
+
+                        </Nav>
+                    </Collapse>
+                </Container>
             </Navbar>
 
-            <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-            <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
-            <ModalBody>
-            <form onSubmit={this.handleLogin}>
-                <div>
-                        <Input label="Username" htmlFor="username" type="text" id="username" name="username" innerRef={input => this.username = input} />
-                </div>
-                <div>
-                        <Input label="Password" htmlFor="password" type="password" id="password" name="password" innerRef={input => this.password = input} />
-                </div>
-                
-                <Btn type="submit" color="primary">Login</Btn>
-            </form>
-            </ModalBody>
+            <Modal show={showModal}>
+                <ModalDialog>
+                    <ModalContent>
+                        <ModalHeader>
+                            <ModalTitle>Login</ModalTitle>
+                            <Btn className='btn-close' color='none' onClick={toggleModal}></Btn>
+                        </ModalHeader>
+                        <ModalBody>
+                            <form>
+                                <div>
+                                    <Input label="Username" htmlFor="username" type="text" id="username" name="username" innerRef={input => this.username = input} />
+                                </div>
+                                <div>
+                                    <Input label="Password" htmlFor="password" type="password" id="password" name="password" innerRef={input => this.password = input} />
+                                </div>
+                            </form>
+                        </ModalBody>
+                        <ModalFooter>
+                            <Btn  color='danger' onClick={toggleModal}>Close</Btn>
+                            <Btn type="submit" color="primary" onClick={toggleModal}>Login</Btn>
+                        </ModalFooter>
+                    </ModalContent>
+                </ModalDialog>
             </Modal>
-            </>
-        );
-    }
+        </>
+    );
+
 }
 
 export default Header;

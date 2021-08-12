@@ -2,6 +2,11 @@ code {
   color: #e03616;
 }
 
+NavLink {
+  color: #fff;
+  margin-right: 10px;
+}
+
 .HomeBody {
   background-color: #1E253D;
   min-height: 100vh;
