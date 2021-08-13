@@ -9,7 +9,7 @@ NavLink {
 
 .HomeBody {
   background-color: #1E253D;
-  min-height: 100vh;
+  min-height: 65vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,6 +26,37 @@ NavLink {
   color: #9CC069;
 }
 
+.AboutDiv {
+  background-color: #D4E4BC;
+  padding-top: 3vh;
+  min-height: 5vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: #1E253D;
+}
+
+.AboutBody {
+  background-color: "off-white";
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #1E253D;
+  ;
+}
+
+.AboutBodyLink {
+  color: #9CC069;
+}
+
+.AboutBodyLink:hover {
+  color: #9CC069;
+}
+
 .App-logo {
   height: 20vmin;
   pointer-events: none;
@@ -38,6 +69,27 @@ NavLink {
 
 .navBtn:hover {
   background-color: #262f4f;
+}
+
+/*Footer {
+  max-height: 10vh;
+}*/
+
+.site-footer {
+  background-image: linear-gradient(#D4E4BC, white);
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerLink {
+  color: #283252;
+}
+
+.footerLink:hover {
+  color:#9CC069;
 }
 
 .btn1, btn1:hover {

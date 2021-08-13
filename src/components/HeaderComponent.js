@@ -32,7 +32,7 @@ function Header() {
         <>
             <Navbar fixed='top' expand='md' dark className="navBg">
                 <Container fluid>
-                    <NavbarBrand className='mr-auto' href='#'><img src={BHlogo} width="50" height="50" alt="logo" /></NavbarBrand>
+                    <NavbarBrand className='mr-auto' href="/home"><img src={BHlogo} width="50" height="50" alt="logo" /></NavbarBrand>
 
                     <NavbarToggler
                         onClick={() => setShowDD(!showDD)}
@@ -63,13 +63,11 @@ function Header() {
                                 <NavLink className="nav-link" to="contact">Contact</NavLink>
                             </NavItem>
 
-                            <NavItem>
-                                <Btn outline rounded className='mx-2 btn1'>PUSH</Btn>
-                                <Btn rounded className='mx-2 btn2' onClick={toggleModal}>PUSH</Btn>
-
-                            </NavItem>
-
                         </Nav>
+                        <span>
+                        <Btn rounded className='mx-2 btn2' onClick={toggleModal}>PUSH</Btn>
+
+                        </span>
                     </Collapse>
                 </Container>
             </Navbar>
