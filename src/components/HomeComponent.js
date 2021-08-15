@@ -7,7 +7,7 @@ function Home() {
         <div className='HomeBody'>
           <img src={BHlogo} className="App-logo" alt="logo" />
           <p>
-            Currently <code>UNDER CONSTRUCTION</code>, please stand by.
+            Hey, I'm <code>Bryan Hayes</code>. I'm studying to become a Web Developer.
           </p>
           <a
             className="HomeBodyLink"

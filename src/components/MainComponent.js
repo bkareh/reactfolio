@@ -22,6 +22,12 @@ render() {
               <div>
               <About />
               </div>
+              <div>
+              <Projects />
+              </div>
+              <div>
+              <Contact />
+              </div>
             
             </>
           );

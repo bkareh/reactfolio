@@ -16,7 +16,7 @@ function About() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            What up, WORLD?
+            Here's a link, though.
           </a>
         </div>
       </>

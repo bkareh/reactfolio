@@ -65,7 +65,7 @@ function Header() {
 
                         </Nav>
                         <span>
-                        <Btn rounded className='mx-2 btn2' onClick={toggleModal}>PUSH</Btn>
+                        <Btn rounded className='mx-2 btn2 col-12 col-md' onClick={toggleModal}>Join Mailer</Btn>
 
                         </span>
                     </Collapse>
@@ -76,22 +76,23 @@ function Header() {
                 <ModalDialog>
                     <ModalContent>
                         <ModalHeader>
-                            <ModalTitle>Login</ModalTitle>
+                            <ModalTitle>Join Mailing List</ModalTitle>
                             <Btn className='btn-close' color='none' onClick={toggleModal}></Btn>
                         </ModalHeader>
                         <ModalBody>
                             <form>
                                 <div>
-                                    <Input label="Username" htmlFor="username" type="text" id="username" name="username" innerRef={input => this.username = input} />
+                                    <Input label="Name" htmlFor="name" type="text" id="username" name="username" innerRef={input => this.username = input} />
                                 </div>
                                 <div>
-                                    <Input label="Password" htmlFor="password" type="password" id="password" name="password" innerRef={input => this.password = input} />
+                                    <Input label="Email" htmlFor="email" type="text" id="email" name="email" innerRef={input => this.email = input} />
                                 </div>
+                                
                             </form>
                         </ModalBody>
                         <ModalFooter>
                             <Btn  color='danger' onClick={toggleModal}>Close</Btn>
-                            <Btn type="submit" color="primary" onClick={toggleModal}>Login</Btn>
+                            <Btn type="submit" color="primary" onClick={toggleModal}>Join</Btn>
                         </ModalFooter>
                     </ModalContent>
                 </ModalDialog>

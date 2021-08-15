@@ -7,14 +7,7 @@ function Footer(props) {
         <footer className="site-footer">
             <div className="container">
                 <div className="row">             
-                    <div className="col-2 offset-1">
-                        <ul className="list-unstyled">
-                            <li><Link className="footerLink"to='/home'>Home</Link></li>
-                            <li><Link className="footerLink"to='/about'>About</Link></li>
-                            <li><Link className="footerLink"to='/projects'>Projects</Link></li>
-                            <li><Link className="footerLink"to='/contact'>Contact</Link></li>
-                        </ul>
-                    </div>
+                    
                     <div className="col text-center">
                         <h5>Social</h5>
                         <a className="footerLink"href="http://linkedin.com/"><MDBIcon fab icon="linkedin" /></a>{' '}
